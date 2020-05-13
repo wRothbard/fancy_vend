@@ -14,7 +14,24 @@
 
 local settings = minetest.settings
 
-local display_node = (settings:get("fancy_vend.display_node") or "default:obsidian_glass")
+minetest.register_alias("default:obsidian_glass", "obsidian:glass")
+minetest.register_alias("default:gold_ingot", "gold:ingot")
+minetest.register_alias("default:steel_ingot", "steel:ingot")
+minetest.register_alias("default:copper_ingot", "copper:ingot")
+minetest.register_alias("default:bronze_ingot", "bronze:ingot")
+minetest.register_alias("default:diamond", "diamond:diamond")
+minetest.register_alias("default:mese_crystal", "mese:crystal")
+minetest.register_alias("default:chest_locked", "chests:chest_locked")
+minetest.register_alias("default:book", "books:book")
+minetest.register_alias("default:chest", "chests:chest")
+minetest.register_alias("default:stick", "trees:stick")
+minetest.register_alias("default:obsidian_shard", "obsidian:shard")
+
+default = {}
+default.node_sound_wood_defaults = function () return music.sounds.nodes.wood end
+
+local display_node = "default:obsidian_glass"
+
 local max_logs = (tonumber(settings:get("fancy_vend.log_max")) or 40)
 local autorotate_speed = (tonumber(settings:get("fancy_vend.autorotate_speed")) or 1)
 local no_alerts = settings:get_bool("fancy_vend.no_alerts")
@@ -1458,7 +1475,7 @@ minetest.register_craft({
     output = "fancy_vend:player_vendor",
     recipe = {
         { "default:gold_ingot",display_node,          "default:gold_ingot"},
-        { "default:diamond",   "default:mese_crystal",        "default:diamond"},
+        { "diamond:fragment",   "default:mese_crystal",        "diamond:fragment"},
         { "default:gold_ingot","default:chest_locked","default:gold_ingot"},
     }
 })
